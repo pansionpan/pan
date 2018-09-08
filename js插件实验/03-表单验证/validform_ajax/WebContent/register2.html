@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ajax方式提交表单</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/Validform_v5.3.2_ncr_min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(e) {
+        
+		//一行代码搞定，提交表单的时候会自动触发验证程序
+		$('#form1').Validform({
+			tiptype:3,
+			ajaxPost:true,
+			callback:function(data){
+				
+				$.Showmsg("提交成功");
+				
+				/*
+				if(data.status=="y"){
+					setTimeout(function(){
+						$.Hidemsg(); //公用方法关闭信息提示框;显示方法是$.Showmsg("message goes here.");
+					},2000);
+				}
+				*/
+			}
+		});
+		
+    });
+
+</script>
+</head>
+
+<body>
+用ajax方式提交表单
+<form name="form1" id="form1" method="post" action="AjaxRequest">
+  <table width="800" border="0">
+    <tr>
+      <td width="151" align="center">ajax验证用户名</td>
+      <td width="439"><input type="text" name="username" ajaxurl="CheckUserName" datatype="s3-16" errormsg="用户名至少3个字符,最多16个字符！" id="username">
+      </td>
+    </tr>
+    <tr>
+      <td align="center">密码</td>
+      <td><input type="password" name="userpwd" id="userpwd" datatype="n6-8" errormsg="密码必须是6到8位数字"></td>
+    </tr>     
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="button" id="button" value="提交"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

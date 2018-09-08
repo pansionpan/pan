@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="layer/layer.js"></script>
+	<script type="text/javascript">		
+		$(document).ready(function(){
+			
+			$('#btn1').click(function(event) {
+				// layer.alert('这是一个对话框');
+				
+				//带图标的
+				/*
+				layer.alert('这是一个对话框',{
+					icon:7
+				}); 
+				*/
+
+				//墨绿深蓝风
+				layer.alert('墨绿风格，点击确认看深蓝', {
+				    skin: 'layui-layer-molv' //样式类名
+				    ,closeBtn: 0
+				}, function(){
+				    layer.alert('偶吧深蓝style', {
+				        skin: 'layui-layer-lan'
+				        ,closeBtn: 0
+				        ,shift: 4 //动画类型
+				    });
+				});
+
+			});
+
+			$('#btn2').click(function(event) {
+				
+				// 确认框
+				layer.confirm('您是如何看待前端开发？', {
+				    btn: ['重要','奇葩'] //按钮
+				}, function(){
+				    layer.msg('的确很重要', {icon: 1});
+				}, function(){
+				    layer.msg('奇葩么么哒', {shift: 6});
+				});
+
+			});
+
+			$('#btn3').click(function(event) {
+				
+				// 提示层
+				layer.msg('玩命提示中',{
+					shift: 6 //动画类型
+				});
+
+			});
+
+			$('#btn4').click(function(event) {
+				
+				// 页面层
+				layer.open({
+					title:'自定义标题',
+				    type: 1,				   
+				    area: ['420px', '400px'], //宽高
+				    content: '<h1>html内容</h1><p>这是我的一个段落</p>'
+				});
+
+			});
+
+			$('#btn4-1').click(function(event) {
+				
+				// 页面层
+				layer.open({
+					title:'自定义标题-2',
+				    type: 1,				   
+				    area: ['420px', '400px'], //宽高
+				    content: $('#page')
+				});
+
+			});
+
+			$('#btn5').click(function(event) {
+
+				$.get('login.html',function(data) {
+
+					// 利用ajax加载其他网页内容到页面层
+					layer.open({
+						title:'自定义标题',
+					    type: 1,				   
+					    area: ['620px', '600px'], //宽高
+					    content: data //把响应结果作为模态层的内容
+					});
+
+				},'html');	
+
+				setTimeout(function(){
+					layer.closeAll();//关闭当前所有模态层
+				},5000);			
+
+			});
+
+
+			$('#btn6').click(function(event) {
+				
+				// 利用iframe加载其他网页内容到页面层 type:2
+				layer.open({
+					title:'自定义标题',
+				    type: 2, 				   
+				    area: ['620px', '600px'], //宽高
+				    content: 'login.html'
+				});
+
+			});
+
+			$('#btn7').click(function(event) {
+				
+				// 加载层
+				// layer.load();
+				// layer.load(2);
+				// layer.msg('加载中....', {icon: 16});
+				// layer.load(1, {shade: true});
+
+				layer.load(1, {
+				    shade: [0.7,'#000'] //0.1透明度的白色背景
+				});
+
+				setTimeout(function(){
+					layer.closeAll();//关闭当前所有模态层
+				},3000);
+
+			});
+
+			$('#btn8').mouseover(function(event) {
+				
+				// tips层
+				//layer.tips('这是一个小提示','#btn8');
+
+				layer.tips('我是另外一个tips，只不过我长得跟之前那位稍有些不一样。', '#btn8', {
+				    tips: [1, '#0cc'],
+				    time: 4000
+				});
+
+			});
+
+			$('#btn9').click(function(event) {
+				
+				// 利用iframe加载其他网页内容到页面层 type:2
+				layer.open({
+					type: 2,
+					  title: false,
+					  area: ['630px', '360px'],
+					  shade: 0.8,
+					  closeBtn: 0,
+					  shadeClose: true,
+					  content: 'demo.mp4'
+				});
+
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<input type="button" value="对话框" id="btn1">	
+	<input type="button" value="确认框" id="btn2">
+	<input type="button" value="提示层" id="btn3">
+	<input type="button" value="页面层" id="btn4">
+	<input type="button" value="页面层" id="btn4-1">
+	<input type="button" value="ajax加载其他网页内容" id="btn5">
+	<input type="button" value="iframe加载其他网页内容" id="btn6">
+	<input type="button" value="加载层" id="btn7">
+	<input type="button" value="小提示" id="btn8">
+	<input type="button" value="h5视频" id="btn9">
+	
+	<div id="div1">
+	</div>
+
+	<div id="page" style="display:none;">
+		<h1>页面的内容</h1>
+		<p>段落内容1</p>
+	</div>
+</body>
+</html>

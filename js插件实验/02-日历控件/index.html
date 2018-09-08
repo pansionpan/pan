@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="js/datetimepicker/jquery.datetimepicker.css">
+</head>
+<body>
+
+	<input type="text" id="date1">
+	<input type="text" id="date2">
+	
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/datetimepicker/jquery.datetimepicker.js"></script>
+	<script type="text/javascript">
+		
+		$(function() {
+			
+			// 给文本框绑定日历控件
+			$('#date1').datetimepicker({
+				lang:'ch',
+				format:'Y-m-d H:i:00',
+				formatDate:'Y-m-d H:i:00',
+				step:10
+			});
+
+			// 给文本框绑定日历控件
+			$('#date2').datetimepicker({
+				lang:'ch',
+				format:'Y-m-d',
+				formatDate:'Y-m-d',
+				timepicker:false
+			});
+
+		});
+
+	</script>
+</body>
+</html>

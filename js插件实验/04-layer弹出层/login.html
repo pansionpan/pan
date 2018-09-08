@@ -1,0 +1,33 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body {
+			background: #0cc;			
+		}
+	</style>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript">	
+		$(document).ready(function(){
+			$('#btn11').click(function(event) {
+
+				//访问父窗口的dom
+				//window.parent.document.getElementById('div1').innerHTML = '这是来自于层的内容';
+				
+				//jquery写法
+				$(window.parent.document).find('#div1').html('这是来自于层的内容....');
+
+				//关闭当前子窗口
+				window.parent.layer.closeAll();
+			});
+		});			
+	</script>
+</head>
+<body>
+	用户名<input type="text">
+	密码<input type="text">
+	<input type="button" value="登录" id="btn11">
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>表单验证基本功能</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/Validform_v5.3.2_ncr_min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(e) {
+        
+		//一行代码搞定，提交表单的时候会自动触发验证程序
+		$('#form1').Validform();
+		
+  });
+
+</script>
+</head>
+
+<body>
+datatype可以是 * | *6-16 | n | n6-16 | s | s6-18 | p | m | e | url
+<form name="form1" id="form1" method="post" action="xxx.jsp">
+  <table width="600" border="0">
+    <tr>
+      <td width="151" align="center">指定长度字符串</td>
+      <td width="439"><input type="text" name="username" datatype="s5-16" errormsg="用户名至少5个字符,最多16个字符！" id="username">
+      s5-16</td>
+    </tr>
+    <tr>
+      <td align="center">指定长度数字</td>
+      <td><input type="password" name="userpwd" id="userpwd" datatype="n6-8" errormsg="密码必须是6到8位数字">n6-8</td>
+    </tr>
+    <tr>
+      <td align="center">只能是数字</td>
+      <td><input type="text" name="textfield" id="textfield" datatype="n" errormsg="必须都是数字">
+        n</td>
+    </tr>
+    <tr>
+      <td align="center">不能为空</td>
+      <td><input type="text" name="textfield2" id="textfield2" datatype="*" errormsg="必须输入内容">
+        *</td>
+    </tr>
+    <tr>
+      <td align="center">邮箱</td>
+      <td><input type="text" name="textfield3" id="textfield3" datatype="e" errormsg="邮箱格式不正确">
+        e</td>
+    </tr>
+    <tr>
+      <td align="center">url网址</td>
+      <td><input type="text" name="textfield4" id="textfield4" datatype="url" errormsg="url格式不正确">
+        url</td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="button" id="button" value="提交"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
